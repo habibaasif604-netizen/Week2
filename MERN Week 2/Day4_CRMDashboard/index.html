@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM Dashboard - Day 5 Interactive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar" id="appSidebar">
+    <div class="sidebar__brand">Dev Preneurs</div>
+    <nav class="sidebar__nav">
+      <a href="#" class="sidebar__link sidebar__link--active" data-tab="dashboard-view">📊 Dashboard</a>
+      <a href="#" class="sidebar__link" data-tab="customers-view">👥 Customers</a>
+      <a href="#" class="sidebar__link" data-tab="analytics-view">📈 Analytics</a>
+      <a href="#" class="sidebar__link" data-tab="settings-view">⚙️ Settings</a>
+    </nav>
+  </aside>
+
+  <div class="app-container">
+    
+    <header class="header">
+      <div class="header__left">
+        <button class="header__menu-btn" id="menuToggleBtn">☰ Menu</button>
+        <div class="header__title-group">
+          <div class="header__title" id="pageMainTitle">Dashboard Overview</div>
+          <span class="header__greeting" id="timeGreeting">Welcome Back!</span>
+        </div>
+      </div>
+      
+      <div class="header__profile" id="profileTrigger">
+        <span class="header__user-name">Habiba Asif</span>
+        <div class="header__avatar">HA</div>
+      </div>
+    </header>
+
+    <div class="toast-notification" id="saveToast">
+      🎉 Settings Configuration Saved Successfully!
+    </div>
+
+    <main class="main-content">
+      
+      <div id="dashboard-view" class="tab-content tab-content--active">
+        <section class="metrics-grid">
+          <div class="card-widget" data-metric="Total Users" data-value="1,250" data-desc="Active profiles registered on Dev Preneurs platform.">
+            <div class="card-widget__title">Total Users</div>
+            <div class="card-widget__value">1,250</div>
+          </div>
+          <div class="card-widget" data-metric="Active Leads" data-value="342" data-desc="Leads pipeline processing through active conversion funnels.">
+            <div class="card-widget__title">Active Leads</div>
+            <div class="card-widget__value">342</div>
+          </div>
+          <div class="card-widget" data-metric="Revenue" data-value="$15,840" data-desc="Accumulated dynamic pipeline revenue generated this tracking cycle.">
+            <div class="card-widget__title">Revenue</div>
+            <div class="card-widget__value">$15,840</div>
+          </div>
+        </section>
+
+        <section class="activity-section">
+          <h3 class="activity-section__title">Recent Activity</h3>
+          <div class="table-wrapper">
+            <table class="activity-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="activity-table__row" data-name="Alex John" data-status="Completed" data-date="2026-07-08" data-amount="$250.00" data-details="Frontend Development Task delivery review.">
+                  <td>Alex John</td>
+                  <td><span class="status-badge status-badge--success">Completed</span></td>
+                  <td>2026-07-08</td>
+                  <td>$250.00</td>
+                </tr>
+                <tr class="activity-table__row" data-name="Sam Wilson" data-status="Pending" data-date="2026-07-09" data-amount="$120.00" data-details="Backend API Database infrastructure scaling query.">
+                  <td>Sam Wilson</td>
+                  <td><span class="status-badge status-badge--pending">Pending</span></td>
+                  <td>2026-07-09</td>
+                  <td>$120.00</td>
+                </tr>
+                <tr class="activity-table__row" data-name="Emily Davis" data-status="Completed" data-date="2026-07-09" data-amount="$450.00" data-details="UI/UX Interactive layout design framework assets.">
+                  <td>Emily Davis</td>
+                  <td><span class="status-badge status-badge--success">Completed</span></td>
+                  <td>2026-07-09</td>
+                  <td>$450.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <div id="customers-view" class="tab-content">
+        <section class="activity-section">
+          <h3 class="activity-section__title">Global CRM Directory</h3>
+          <p style="color: var(--color-text-light); margin-bottom: 15px;">Total Profiles Managed: 9 Clients Active.</p>
+          <div class="sync-banner">
+            📌 Database pipeline is synchronized with active server logs. Click on any row inside the recent activities screen to modify log configurations.
+          </div>
+        </section>
+      </div>
+
+      <div id="analytics-view" class="tab-content">
+        <section class="activity-section">
+          <h3 class="activity-section__title">Performance Metrics Analytics</h3>
+          <p style="color: var(--color-text-light); margin-bottom: 25px;">Dynamic graphical interface modules compiling current session records.</p>
+          
+          <div class="chart-box">
+            <h4 class="chart-box__title">Monthly Project Conversion Distribution</h4>
+            <div class="chart-row">
+              <span class="chart-row__label">Frontend Development (UI/UX)</span>
+              <div class="chart-row__track"><div class="chart-row__fill" style="width: 85%;">85%</div></div>
+            </div>
+            <div class="chart-row">
+              <span class="chart-row__label">Backend Integrations (Node/Express)</span>
+              <div class="chart-row__track"><div class="chart-row__fill" style="width: 65%; background: #f59e0b;">65%</div></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="settings-view" class="tab-content">
+        <section class="activity-section">
+          <h3 class="activity-section__title">System Control Panel</h3>
+          <p style="color: var(--color-text-light); margin-bottom: 25px;">Configure your Dev Preneurs administrative parameters.</p>
+          
+          <div class="settings-form">
+            <div class="form-field">
+              <label class="form-field__label">System Administrator Email</label>
+              <input type="email" id="adminEmail" value="habiba.asif@example.com" class="form-field__input">
+            </div>
+            <div class="form-field">
+              <label class="form-field__label">Dashboard Layout Theme</label>
+              <select class="form-field__input">
+                <option>Enterprise Standard Slate (Dark Sidebar)</option>
+                <option>Ocean Minimalist (Light Mode)</option>
+              </select>
+            </div>
+            <button class="settings-save-btn" id="saveSettingsBtn">Save Settings Configurations</button>
+          </div>
+        </section>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="dashboardModal">
+    <div class="modal-content">
+      <span class="modal-content__close" id="modalCloseX">&times;</span>
+      <h2 id="modalHeader" class="modal-content__title">Detail View</h2>
+      <div class="modal-content__body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

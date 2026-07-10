@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Management System - Intake Form</title>
+  
+  <style>
+    /* Basic Setup */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Form Container */
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    #form-title {
+      color: #2c3e50;
+      margin-bottom: 5px;
+      font-size: 24px;
+    }
+
+    .form-subtitle {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    /* Form Groups & Labels */
+    .form-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #34495e;
+      margin-bottom: 8px;
+    }
+
+    .required {
+      color: #e74c3c;
+    }
+
+    /* Inputs, Select & Textarea Styling */
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    /* Focus State for Accessibility */
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+
+    /* CSS Pseudo-classes Validation (:valid / :invalid) */
+    .form-group input:focus:invalid,
+    .form-group.was-validated input:invalid {
+      border-color: #e74c3c;
+      background-color: #fdf2f2;
+    }
+
+    .form-group input:focus:valid,
+    .form-group.was-validated input:valid {
+      border-color: #2ecc71;
+      background-color: #f4fbf7;
+    }
+
+    /* Hide error message by default */
+    .error-msg {
+      display: none;
+      color: #e74c3c;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    /* Show error on focus OR after submit button is clicked */
+    input:focus:invalid ~ .error-msg,
+    .form-group.was-validated input:invalid ~ .error-msg {
+      display: block;
+    }
+
+    /* Submit Button styling */
+    .submit-btn {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #2980b9;
+    }
+
+    .submit-btn:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2 id="form-title">Lead Intake Form</h2>
+    <p class="form-subtitle">Please fill out the form to add a new lead into the system.</p>
+
+    <form id="leadForm" aria-labelledby="form-title" novalidate>
+      
+      <div class="form-group">
+        <label for="fullName">Full Name <span class="required" aria-hidden="true">*</span></label>
+        <input 
+          type="text" 
+          id="fullName" 
+          name="fullName" 
+          placeholder="Enter full name" 
+          required 
+          aria-required="true">
+        <span class="error-msg" aria-live="polite">Please enter a valid name.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address <span class="required" aria-hidden="true">*</span></label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="name@company.com" 
+          required 
+          aria-required="true">
+        <span class="error-msg" aria-live="polite">Please enter a valid email address.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="interest">Interested Service</label>
+        <select id="interest" name="interest">
+          <option value="web-dev">Web Development</option>
+          <option value="app-dev">Mobile App Development</option>
+          <option value="uiux">UI/UX Design</option>
+          <option value="seo">SEO & Marketing</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="notes">Additional Notes</label>
+        <textarea id="notes" name="notes" rows="4" placeholder="Any specific requirements..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Lead</button>
+
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('leadForm').addEventListener('submit', function(event) {
+      // Form reload hone se rokne ke liye
+      event.preventDefault(); 
+      
+      // Har group par class lagane ke liye taaki CSS validations active ho sakein
+      const formGroups = document.querySelectorAll('.form-group');
+      formGroups.forEach(group => {
+        group.classList.add('was-validated');
+      });
+
+      // Check agar form valid hai ya nahi
+      if (this.checkValidity()) {
+        alert('🎉 Success! Lead Form Submitted successfully.');
+        this.reset(); // Form clear karne ke liye
+        
+        // Validation classes remove karne ke liye reset ke baad
+        formGroups.forEach(group => {
+          group.classList.remove('was-validated');
+        });
+      } else {
+        alert('❌ Please fill all required fields correctly.');
+      }
+    });
+  </script>
+
+</body>
+</html>

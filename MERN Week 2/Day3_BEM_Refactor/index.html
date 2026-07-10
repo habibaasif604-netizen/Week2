@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Team</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 class="team__title">Meet Our Team</h1>
+
+<div class="team">
+
+    <!-- Card 1 -->
+    <div class="team__card"
+        onclick="openModal('Alex John','Frontend Developer','Passionate about building clean and beautiful user interfaces.','https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200')">
+
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200"
+            alt="Alex John"
+            class="team__image">
+
+        <h3 class="team__name">Alex John</h3>
+
+        <p class="team__role">Frontend Developer</p>
+
+        <p class="team__text">View Details</p>
+
+    </div>
+
+    <!-- Card 2 -->
+    <div class="team__card"
+        onclick="openModal('Sam Wilson','Backend Engineer','Expert in designing scalable databases and secure APIs.','https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200')">
+
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200"
+            alt="Sam Wilson"
+            class="team__image">
+
+        <h3 class="team__name">Sam Wilson</h3>
+
+        <p class="team__role">Backend Engineer</p>
+
+        <p class="team__text">View Details</p>
+
+    </div>
+
+    <!-- Card 3 -->
+    <div class="team__card"
+        onclick="openModal('Emily Davis','UI/UX Designer','Creating intuitive, user-friendly, and modern digital experiences.','https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200')">
+
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200"
+            alt="Emily Davis"
+            class="team__image">
+
+        <h3 class="team__name">Emily Davis</h3>
+
+        <p class="team__role">UI/UX Designer</p>
+
+        <p class="team__text">View Details</p>
+
+    </div>
+
+    <!-- Card 4 -->
+    <div class="team__card"
+        onclick="openModal('Ryan Malik','DevOps Engineer','Specialized in CI/CD pipelines, cloud infrastructure, and automation.','https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200')">
+
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200"
+            alt="Ryan Malik"
+            class="team__image">
+
+        <h3 class="team__name">Ryan Malik</h3>
+
+        <p class="team__role">DevOps Engineer</p>
+
+        <p class="team__text">View Details</p>
+
+    </div>
+
+    <!-- Card 5 -->
+    <div class="team__card"
+        onclick="openModal('Sarah Khan','Product Manager','Bridging the gap between technical teams and business goals.','https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200')">
+
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200"
+            alt="Sarah Khan"
+            class="team__image">
+
+        <h3 class="team__name">Sarah Khan</h3>
+
+        <p class="team__role">Product Manager</p>
+
+        <p class="team__text">View Details</p>
+
+    </div>
+
+    <!-- Card 6 -->
+    <div class="team__card"
+        onclick="openModal('David Lee','QA Engineer','Ensuring high-quality software through rigorous automated testing.','https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200')">
+
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200"
+            alt="David Lee"
+            class="team__image">
+
+        <h3 class="team__name">David Lee</h3>
+
+        <p class="team__role">QA Engineer</p>
+
+        <p class="team__text">View Details</p>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+
+<div class="modal" id="modal">
+
+    <div class="modal__content">
+
+        <span class="modal__close" onclick="closeModal()">&times;</span>
+
+        <img id="modalImage" class="modal__image" src="" alt="">
+
+        <h2 id="modalName"></h2>
+
+        <h4 id="modalRole"></h4>
+
+        <p id="modalBio"></p>
+
+    </div>
+
+</div>
+
+<script>
+    // Get modal
+    const modal = document.getElementById("modal");
+
+    // Open Modal
+    function openModal(name, role, bio, image) {
+        document.getElementById("modalName").textContent = name;
+        document.getElementById("modalRole").textContent = role;
+        document.getElementById("modalBio").textContent = bio;
+        document.getElementById("modalImage").src = image;
+
+        modal.style.display = "flex";
+    }
+
+    // Close Modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
+</script>
+
+
+</body>
+</html>
